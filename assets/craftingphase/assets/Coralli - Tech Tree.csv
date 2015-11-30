@@ -1,0 +1,81 @@
+Sunlight,*
+Water,*
+Phytoplankton,*
+Detritus,*
+Zooplankton,Phytoplankton + Phytoplankton
+Rhodophyta (Red Algae),Sunlight + Detritus
+Ulva lactuca (Sea Lettuce),Sunlight + water
+Dictyota ,Detritus + Detritus
+Branching Coral,Sunlight + Phytoplankton
+Brain Coral,Sunlight + Sunlight
+Soft Coral (Sea Fan),Phytoplankton + Detritus
+Mushroom Coral,Water + Water
+Giant Barrel Sponge (Demospongiae),Water + Detritus
+Red finger Sponge (Halicona),Phytoplankton + Water
+Diadema antillarum (long-spined sea urchin),Ulva lactuca + Branching Coral
+Feather Duster (Bispira brunnea),Detritus + Brain Coral
+Petrochirus digenes (Giant Hermit Crab),Rhodophyta + Detritus
+Arrow Crab,Zooplankton + Feather Duster
+Flamingo Tongue Snail,Soft Coral + Detritus
+Atlantic deer cowrie (Macrocypraea cervus),Ulva lactuca + Rhodophyta
+Sponge Brittle Star (Ophiothrix suensoni),Detritus + Giant Barrel Sponge
+Christmas tree worm,Phytoplankton + Massive Coral
+Ringed anemone (Bartholomea annulata),Zooplankton + Zooplankton
+Pederson's Cleaner Shrimp (Ancylomenes pedersoni),Giant Barrel Sponge + Zooplankton
+Rock Boring Urchin,Mushroom Coral + Brain Coral
+Sea Egg Urchin (Tripneistes ventricosus),Ulva lactuca + Brain Coral
+Amphipods (Leukothoe),Giant Barrel Sponge + Phytoplankton
+Hairy Clinging Crab (Mythrix pilosus),Branching Coral + Dictyota
+Emerald Crab (Mithraculus sculptus),Ulva lactuca + Mushroom Coral
+Peanut worm,Zooplankton + Phytoplankton
+Bicolored Damselfish (Stegastes paritus),Rhodophyta + Rhodophyta
+Cocoa Damselfish,Rhodophyta + Red Finger Sponge
+Spiny Lobster,long-spined urchin + flamingo Tongue snail
+Brideled Goby (Cor Glau),Zooplankton + Amphipods
+Key Blenny,Amphipods + Feather Duster
+Anemone mysid (Heteromysis actiniae),Ringed Anemone + Feather Duster
+Sargeant Major,Phytoplankton + Pederson's Cleaner Shrimp
+Caribbean reef octopus,Arrow crab + Atlantic deer cowrie
+Dusky squirrelfish,emerald crab + peanut worm
+Smooth trunkfish,christmas tree worm + peanut worm
+White grunt (Haemulon plumeierii),emerald crab + Hairy clinging crab
+Frog shell snail (Bursa),Peanut worm + detritus
+Grey Angelfish (Pomacanthus arcuatus),Red Finger Sponge +Giant Barrel Sponge
+Rosy blenny (Malacoctenus macropus),Hairy Clinging Crab + Amphipod
+Queen Triggerfish (Balistes vetula),Long spined Sea urchin + sea egg urchin
+Midnight Parrotfish,Brain Coral
+Snapping Shrimp (Alpheus armatus),Ringed Anemone + Pederson's Cleaner Shrimp
+Stoplight Parrotfish (Sparisoma viride),Mushroom Coral
+Blue Tang (Acanthurus coerleus),
+Southern stingray,White grunt + Frog Shell Snail
+Yellow stingray (Urobatis jamaicensis),Snapping Shrimp + Dusky Squirrelfish
+Cone snail (Chelyconus),Brideled goby + Frog shell snail
+Yellowtail Snapper (Ocyurus chrysurus),
+Greater Amberjack (Seriola dumerili),
+Trumpetfish (Aulostomus maculates),
+Puddingwife Wrasse,
+Blue Headed Wrasse (Thalassoma bifasciatum),
+Slippery dick (Halichoeres bivittatus),
+Bar Jack (Caranx ruber),
+Peacock flounder ,
+,
+,
+,
+,
+,
+Goliath Grouper,
+Speckled Hind,
+Spotted Eagle Ray,Clam +Snail
+Grasby (Cephalopholis cruentatus),Yellow Snapper + 
+Nassau Grouper,Puddingwife Wrasse + Midnight Parrotfish
+Barracuda,
+Spanish Hogfish,
+Green Moray Eel,
+Queen Triggerfish (Balistes vetula),
+Lionfish,
+Logger head Sea Turtle,
+Green Sea Turtle,
+Tiger Shark,
+Reef Shark,
+Nurse Shark,Southern Stingray + Slippery Dick
+Spotted Moray Eel (Gymnothorax moringa),
