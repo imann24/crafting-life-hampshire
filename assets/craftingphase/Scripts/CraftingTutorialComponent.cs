@@ -254,15 +254,14 @@ public class CraftingTutorialComponent: MonoBehaviour {
 	
 	//brings all the components of a certain type to the front
 	public static void ActivateTutorialComponents (MainMenuController.Tutorial tutorialType) {
-		ActiveTutorialType = tutorialType;
-		ChangeTextOnElementPanels(tutorialType);
 
-		foreach (CraftingTutorialComponent component in AllTutorialsComponents[tutorialType]) {
-			component.ActivateComponent();
-		}
+		if (AllTutorialsComponents.ContainsKey(tutorialType)) {
+			ActiveTutorialType = tutorialType;
+			ChangeTextOnElementPanels(tutorialType);
 
-		if (tutorialType == MainMenuController.Tutorial.BuyHint && ElementPanelsActive == 0) {
-			DisplayTutorialMessage(MainMenuController.Tutorial.BuyHint);
+			foreach (CraftingTutorialComponent component in AllTutorialsComponents[tutorialType]) {
+				component.ActivateComponent();
+			}
 		}
 	}
 

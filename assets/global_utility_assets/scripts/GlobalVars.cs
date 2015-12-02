@@ -97,7 +97,7 @@ public class GlobalVars {
 
 	//the number of elmeents a player has unlocked
 	public static int NUMBER_ELEMENTS_UNLOCKED = 0;
-
+	public const bool INVENTORY = false;
 	public static int TIER_COUNT = 10;
 	public static bool [] TIER_UNLOCKED;
 	public static int TECH_TREE_SOURCE;

@@ -67,12 +67,6 @@ using System.Collections.Generic;
 		//increases the play count for crafting
 		GlobalVars.CRAFTING_PLAY_COUNT++;
 
-#if DEBUG
-		Debug.Log("locking the elements to test tier unlocking");
-		Cheats.LockAllElements();
-		PlayerPrefs.SetInt("water", 3);
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY, true);
-#endif
 	}
 
 	void Start () {
@@ -401,18 +395,7 @@ using System.Collections.Generic;
 			                                     new KeyValuePair<string, int>("air", 1)))  {
 				OnCallTutorialEvent(Tutorial.Crafting);
 
-			} 
-
-			//the buying a hint tutorial
-			else if (!Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY) &&
-			           Utility.SufficientElementsToPurchase(tutorialHint.GetCosts())) {
-#if IN_PROGRESS
-				return;
-#endif
-#if DEBUG
-				Debug.Log("Calling the hint tutorial");
-#endif
-				OnCallTutorialEvent(Tutorial.BuyHint);
+		
 			} 
 
 			//the upgrading a powerup tutorial

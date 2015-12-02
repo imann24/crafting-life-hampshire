@@ -190,6 +190,7 @@ public class CraftingControl : MonoBehaviour {
 				//sends the event call
 				if (OnReadyToCraft != null) {
 					OnReadyToCraft(true);
+					toggleCraftedElement(true);
 				}
 				combine ();
 		} else {
@@ -318,8 +319,11 @@ public class CraftingControl : MonoBehaviour {
 	public void toggleCraftedElement (bool active) {
 		bool spriteToggled = false;
 		if (active) {
-			myElementGameObject.name = resultElement;
-			if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1+parentElement2) && resultElement == GlobalVars.RECIPES_BY_NAME[parentElement1+parentElement2].getName()) {
+
+			// removed this part:  && resultElement == GlobalVars.RECIPES_BY_NAME[parentElement1+parentElement2].getName()
+			if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1+parentElement2)) {
+				resultElement = GlobalVars.RECIPES_BY_NAME[parentElement1+parentElement2].getName();
+				myElementGameObject.name = resultElement;
 				myElementSprite.sprite = GlobalVars.ELEMENT_SPRITES[resultElement];
 			} else {
 				//removes element from compiler

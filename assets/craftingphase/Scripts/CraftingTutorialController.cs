@@ -58,28 +58,6 @@ public class CraftingTutorialController : MonoBehaviour {
 		InitializeTutorialMessageBoard();
 		SubscribeEvents();
 
-#if DEBUG
-
-		Debug.Log("Unlocking first tier and increasing all elements");
-		Cheats.IncreaseAllElements(50);
-		Cheats.UnlockTier(1);
-
-		for (int i = 0; i < GlobalVars.AllCraftingModeTutorials.Length; i++) {
-			Utility.SetPlayerPrefIntAsBool(GlobalVars.AllCraftingModeTutorials[i], false);
-		}
-
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY, true);
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.CRAFTING_TUTORIAL_KEY, true);
-		//Utility.SetPlayerPrefIntAsBool(GlobalVars.BUY_HINT_TUTORIAL_KEY, true);
-		//Utility.SetPlayerPrefIntAsBool(GlobalVars.UPGRADE_POWERUP_TUTORIAL_KEY, true);
-		//Utility.SetPlayerPrefIntAsBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY, true);
-		PowerUp.ResetPowerUpLevel("LaneConversion");
-
-
-		for (int i = 0; i < 4; i++) {
-			PlayerPrefs.SetInt(GeneratePowerUpList.FirstPowerUpElements[i], GeneratePowerUpList.FirstPowerUpCosts[i]);
-		}
-#endif
 		//establishes the reference to the mask component
 		foreach (Image image in GetComponentsInChildren<Image>()) {
 			if (image.gameObject.name == "Mask") {

@@ -327,10 +327,11 @@ public class CaptureScript : MonoBehaviour {
 
 	//updates the length of the bar to match the number of elements in the inventory (maxes out at 100) 
 	public void updateInventoryBarFill (int elementCount) {
-#if DEBUG
-		Debug.Log("This element is having it's inventory bar set : " +  gameObject + " to " + Mathf.Clamp(((float)elementCount)/100f, 0, 1f));
-#endif
-		elementAmountBar.fillAmount = Mathf.Clamp(((float)elementCount)/100f, 0, 1f);
+		if (GlobalVars.INVENTORY) {
+			elementAmountBar.fillAmount = Mathf.Clamp(((float)elementCount)/100f, 0, 1f);
+		} else {
+			elementAmountBar.enabled = false;
+		}
 	}
 	//updates the length of the bar to match the number of combinations an element has (maxes out at 6 (temp))
 	public void updateBioCombatBar (int elementCombinations){
@@ -375,15 +376,19 @@ public class CaptureScript : MonoBehaviour {
 	}
 
 	public void setElementCountText () {
-		if (elementCount != null && elementName != null) {
-			elementCount.text = PlayerPrefs.GetInt(myElement.sprite.name).ToString();
-			if (int.Parse(elementCount.text) <= 0) {
-				elementCount.color = crafter.errorColor;
-				elementName.color = crafter.errorColor;
-			} else {
-				elementName.color = Color.white;
-				elementCount.color = Color.white;
+		if (GlobalVars.INVENTORY) {
+			if (elementCount != null && elementName != null) {
+				elementCount.text = PlayerPrefs.GetInt(myElement.sprite.name).ToString();
+				if (int.Parse(elementCount.text) <= 0) {
+					elementCount.color = crafter.errorColor;
+					elementName.color = crafter.errorColor;
+				} else {
+					elementName.color = Color.white;
+					elementCount.color = Color.white;
+				}
 			}
+		} else {
+			elementCount.enabled = false;
 		}
 	}
 

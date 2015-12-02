@@ -27,7 +27,6 @@ public class SpawnerControl : MonoBehaviour {
 	private bool panelIsLocked = false;
 	//button info
 	private bool shouldSpawnAnElement = false;
-
 	//component references
 	AudioSource buttonClick;
 	Renderer myRenderer;
@@ -173,7 +172,11 @@ public class SpawnerControl : MonoBehaviour {
 	}
 
 	public void setInventoryCount () {
-		myInventoryCount.text = PlayerPrefs.GetInt (currentElement.getName()).ToString();
+		if (GlobalVars.INVENTORY) {
+			myInventoryCount.text = PlayerPrefs.GetInt (currentElement.getName()).ToString();
+		} else {
+			myInventoryCount.enabled = false;
+		}
 	}
 
 	private void setIcon () {
