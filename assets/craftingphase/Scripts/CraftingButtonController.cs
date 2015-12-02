@@ -60,9 +60,6 @@ public class CraftingButtonController : MonoBehaviour {
 	public GameObject musicOffActive;
 	public GameObject SFXOnActive;
 	public GameObject SFXOffActive;
-
-	//the Gathering Planet script
-	private RandomGatherPlanet planetScript;
 	
 	//for loading the scene asynchronolously
 	AsyncOperation async;
@@ -78,14 +75,12 @@ public class CraftingButtonController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		planetScript = GameObject.FindGameObjectWithTag ("GatherPlanet").GetComponent<RandomGatherPlanet> ();
 
 		//assigns the button references
 		page1ButtonIcon = page1Button.GetComponent<Image>();
 		page1ButtonText = page1Button.transform.GetChild (0).GetComponent<Text>();
 		page2ButtonIcon = page2Button.GetComponent<Image>();
 		page2ButtonText = page2Button.transform.GetChild (0).GetComponent<Text>();
-		instructionsController.setText (craftingInstructions);
 
 		//sets the music buttons correctly
 		bool music;
@@ -187,8 +182,6 @@ public class CraftingButtonController : MonoBehaviour {
 			elementsInDropZones[index] = noElementString;
 		}
 		//toggles the play button on and off
-		toggleGatheringPlayButton(readyToEnterGathering);
-		setGatheringPlanet(readyToEnterGathering);
 	}
 
 	public void enqueueElement (string element) {
@@ -214,10 +207,6 @@ public class CraftingButtonController : MonoBehaviour {
 		if (!elementPlaced) {
 			gatheringDropZoneQueue[0].captureElement(GlobalVars.ELEMENT_SPRITES[element]);
 		}
-
-		//checks whether the game is ready to enter gathering
-		toggleGatheringPlayButton(readyToEnterGathering);
-		setGatheringPlanet(readyToEnterGathering);
 	}
 
 	public void drag (GameObject g) {
@@ -254,15 +243,6 @@ public class CraftingButtonController : MonoBehaviour {
 		if (page2Button.activeSelf) {
 			page2ButtonText.color = button2Color;
 			page2ButtonIcon.color = button2Color;
-		}
-	}
-
-	//sets the scrolling text based on the game objects position
-	public void setInstructionScroll (GameObject scrollBar) {
-		if (scrollBar.GetComponent<Scrollbar>().value > 0.5f) {
-			instructionsController.setText(gatheringInstructions + "     ");
-		} else {
-			instructionsController.setText(craftingInstructions + "     ");
 		}
 	}
 
@@ -333,15 +313,8 @@ public class CraftingButtonController : MonoBehaviour {
 			}
 		}
 	}
-
-	private void setGatheringPlanet (bool active) {
-		if (active) {
-			planetScript.setPlanet (elementsInDropZones);
-		} else {
-			planetScript.setNoPlanet();
-		}
-	}
 	
+
 	public void toggleCrafting (bool active) {
 		if (active) {
 			ScrollBarDisplay.mode = ScrollBarDisplay.Mode.Crafting;

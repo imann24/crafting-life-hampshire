@@ -143,23 +143,12 @@ public class CraftingControl : MonoBehaviour {
 
 		if (elementIsReadyToCraft) {
 			//calls the event to create an element
-			if (OnElementCreated != null && validInventoryAmounts()) {
+			if (OnElementCreated != null) {
 				Utility.Log("created an element and fired the event");
 				OnElementCreated(resultElement, parentElement1, parentElement2, isNew);
 			}
 
-			//lowers the flag to craft if the player has run out of either element
-			if (!validInventoryAmounts()) {
-				elementIsReadyToCraft = false;
-				setInsufficientMessage();
-				if (OnIncorrectCraft != null) {
-					OnIncorrectCraft();
-				}
-
-			} else {
-				setBothElementsInMessage();
-			}
-		} else if (invalidCombination || !validInventoryAmounts()) {
+		} else if (invalidCombination) {
 			if (OnIncorrectCraft != null) {
 				OnIncorrectCraft();
 			}
@@ -198,28 +187,11 @@ public class CraftingControl : MonoBehaviour {
 		}
 	
 		if (zone1HasElement && zone2HasElement) {
-			if (validInventoryAmounts()) {
-
 				//sends the event call
 				if (OnReadyToCraft != null) {
 					OnReadyToCraft(true);
 				}
 				combine ();
-			} else {
-				if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1 + parentElement2)) {
-					resultElement = GlobalVars.RECIPES_BY_NAME[parentElement1 + parentElement2].getName();
-					myElementSprite.enabled = true;
-
-					//alerts the capture zone that it contains an elmeent
-					compiler.elementHasBeenCapured();
-					myElementSprite.sprite = GlobalVars.ELEMENT_SPRITES[resultElement];
-				} else {
-					elementIsReadyToCraft = false;
-					//myElementSprite.enabled = false;
-				}
-				setInsufficientMessage();
-			}
-			toggleCraftedElement(true);
 		} else {
 			//clears the compiler
 			compiler.OnMouseDown();
@@ -249,7 +221,7 @@ public class CraftingControl : MonoBehaviour {
 		mainMessage.text = "";
 		subMessage.text = bothElementsInSub;
 		elementName.text = Utility.UppercaseWords(resultElement) + bothElementsInMain;
-		inventoryNumber.text = PlayerPrefs.GetInt(resultElement).ToString();
+
 		setTextToRegularColor();
 	}
 
@@ -275,7 +247,6 @@ public class CraftingControl : MonoBehaviour {
 		mainMessage.text = "";
 		subMessage.text = "";
 		elementName.text = "Base Element: Cannot be Deconstructed";
-		inventoryNumber.text = PlayerPrefs.GetInt(element).ToString();
 		setTextToErrorMessageColor();
 	}
 
@@ -425,32 +396,10 @@ public class CraftingControl : MonoBehaviour {
 
 	//makes the child gameobject into the new element
 	private void createElement (string newElement, string parent1, string parent2, bool isNew) {
-		//updates the playerprefs variables
-		if (PlayerPrefs.GetInt (parent1) > 0 && PlayerPrefs.GetInt (parent2) > 0) {
-			Utility.IncreasePlayerPrefValue (parent1, -1);
-			Utility.IncreasePlayerPrefValue (parent2, -1);
-			Utility.IncreasePlayerPrefValue (newElement, 1);
-		}
-		//updates the text in the scene
-		zone1Capturer.setElementCountText();
-		zone2Capturer.setElementCountText();
-		panelControl.updatePanelCounts();
-
 		//if tier is not yet unlocked
 		if (!GlobalVars.TIER_UNLOCKED[resultTier]) {
 			OnTierUnlocked(resultTier);
 			GlobalVars.TIER_UNLOCKED[resultTier] = true;
-		}
-	}
-
-	
-	//method to check whether there's enough of an element to craft
-	private bool validInventoryAmounts () {
-		if ((PlayerPrefs.GetInt(parentElement1) > 0 && PlayerPrefs.GetInt(parentElement2) > 0 && parentElement1 != parentElement2) || 
-		    (parentElement1 == parentElement2 && PlayerPrefs.GetInt(parentElement1) >= 2)) {
-			return true;
-		} else {
-			return false;
 		}
 	}
 }
