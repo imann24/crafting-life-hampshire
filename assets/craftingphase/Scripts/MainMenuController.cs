@@ -70,6 +70,12 @@ using System.Collections.Generic;
 	}
 
 	void Start () {
+		#if UNITY_WEBGL
+			//sets the camera aspect for standalone builds
+			Camera.main.aspect = 3.0f/4.0f;
+			Screen.SetResolution(600,800,false);
+		#endif
+
 		//calls the event
 		if (OnEnterMenu != null) {
 			OnEnterMenu();
