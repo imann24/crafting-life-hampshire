@@ -21,7 +21,7 @@ public class CraftingTutorialComponent: MonoBehaviour {
 
 	//for the tutorials that involve element panels
 	private static string GatheringTutorialElementPanelText = "1";
-	private static string CraftingTutorialElementPanelText = "2";
+	private static string CraftingTutorialElementPanelText = "1";//##### was "2"
 	private static int CraftingMaxElementPanelsNeeded = 2;
 	private static int BuyHintMaxElementPanelsNeeded = 1;
 	public static int ElementPanelsActive = 0;

@@ -49,16 +49,17 @@ public class PurchaseHint : MonoBehaviour {
 		Debug.Log ("hint bought for "+elementHint);
 #endif
 
-		if (PlayerPrefs.GetInt (myElem1) >= myCost1 &&
+		/*if (PlayerPrefs.GetInt (myElem1) >= myCost1 && //###so it doesn't check for price
 		    PlayerPrefs.GetInt (myElem2) >= myCost2 &&
 		    PlayerPrefs.GetInt (myElem3) >= myCost3 &&
 		    PlayerPrefs.GetInt (myElem4) >= myCost4 &&
 		    PlayerPrefs.GetInt(elementHint.ToLower()+GlobalVars.HINT_STRING) != 1) {
-
+		    
 			PlayerPrefs.SetInt(myElem1,PlayerPrefs.GetInt (myElem1)-myCost1);
 			PlayerPrefs.SetInt(myElem2,PlayerPrefs.GetInt (myElem2)-myCost2);
 			PlayerPrefs.SetInt(myElem3,PlayerPrefs.GetInt (myElem3)-myCost3);
 			PlayerPrefs.SetInt(myElem4,PlayerPrefs.GetInt (myElem4)-myCost4);
+			*/
 			PlayerPrefs.SetInt(elementHint.ToLower()+GlobalVars.HINT_STRING,1);
 			mainScript.callHintPanel();
 			mainScript.loadTier(GlobalVars.ELEMENTS_BY_NAME[elementHint.ToLower()].getTier()-1,true);
@@ -69,7 +70,7 @@ public class PurchaseHint : MonoBehaviour {
 
 			//mainScript.updateElementNames;
 			
-		}
+		//}
 		
 		
 	}

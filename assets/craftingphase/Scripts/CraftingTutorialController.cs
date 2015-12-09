@@ -141,9 +141,11 @@ public class CraftingTutorialController : MonoBehaviour {
 	//uses an enum Tutorial from MainMenuController to decide which tutorial to execute
 	private void TutorialEventHandler (MainMenuController.Tutorial tutorial) {
 		Utility.Log(tutorial + " is now playing");
-		if (tutorial == MainMenuController.Tutorial.Gathering) {
-			ExecuteTutorial(OnElementsDraggedIntoGatheringTutorialBegan, tutorial);
-		} else if (tutorial == MainMenuController.Tutorial.Crafting) {
+		//#####out
+		//if (tutorial == MainMenuController.Tutorial.Gathering) {
+			//ExecuteTutorial(OnElementsDraggedIntoGatheringTutorialBegan, tutorial);
+		//} else 
+		if (tutorial == MainMenuController.Tutorial.Crafting) {
 			ExecuteTutorial(OnCraftingModeTutorialBegan, tutorial);
 		} else if (tutorial == MainMenuController.Tutorial.TierSwitch) {
 			ExecuteTutorial(OnTierSwitchingTutorialBegan, tutorial);
@@ -273,6 +275,7 @@ public class CraftingTutorialController : MonoBehaviour {
 	}
 	
 	private void TriggerCraftingTutorial () {
+		CraftingTutorialComponent.ActivateTutorialComponents(MainMenuController.Tutorial.Gathering);//##### added
 		CraftingTutorialComponent.ActivateTutorialComponents(MainMenuController.Tutorial.Crafting);
 	}
 
@@ -303,6 +306,7 @@ public class CraftingTutorialController : MonoBehaviour {
 			Utility.Log("Actually turning off the crafting tutorial");
 			EndTutorial ();
 			CraftingTutorialComponent.DeactivateTutorialComponents(MainMenuController.Tutorial.Crafting);
+			CraftingTutorialComponent.DeactivateTutorialComponents(MainMenuController.Tutorial.Gathering);//#####added
 		}
 	}
 	

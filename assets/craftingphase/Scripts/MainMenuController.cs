@@ -383,7 +383,7 @@ using System.Collections.Generic;
 
 			//the gathering tutorial
 			if (!Utility.PlayerPrefIntToBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY)) {
-				OnCallTutorialEvent(Tutorial.Gathering);
+				OnCallTutorialEvent(Tutorial.Crafting);//###ededted from Tutorial.Gathering
 
 			} 
 
