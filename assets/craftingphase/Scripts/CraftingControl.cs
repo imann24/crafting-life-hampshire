@@ -14,6 +14,8 @@ using System.Collections;
 //controls the combination of elements via a stack of the elements that collide w/ eachother
 public class CraftingControl : MonoBehaviour {
 
+	public GameObject newTierPopUp;
+
 	//crafting events
 	public delegate void CraftAction(string newElement, string parent1, string parent2, bool isNew);
 	public delegate void DiscoverAction (string newElement);
@@ -402,6 +404,7 @@ public class CraftingControl : MonoBehaviour {
 	private void createElement (string newElement, string parent1, string parent2, bool isNew) {
 		//if tier is not yet unlocked
 		if (!GlobalVars.TIER_UNLOCKED[resultTier]) {
+			newTierPopUp.SetActive(true);
 			OnTierUnlocked(resultTier);
 			GlobalVars.TIER_UNLOCKED[resultTier] = true;
 		}
